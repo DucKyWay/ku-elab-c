@@ -19,18 +19,20 @@ int main() {
     printf("%d %c %f %c %s\n", 10, 'A', 2.0, 66, "test");
     
     puts("Hello, World! This is Pyramid test!");
-    for(int i=0; i<= layer; i++) {
-        for(int j=layer-i; j>=0; j--) {
-            printf(" ");
-        }
-        for(int j=0; j<=i; j++) {
-            printf("*");
-        }
-        for(int j=0; j<i; j++) {
-            printf("*");
-        }
-        printf("\n");
-    }
+    // for(int i=0; i<= layer; i++) {
+    //     for(int j=layer-i; j>=0; j--) {
+    //         printf(" ");
+    //     }
+    //     for(int j=0; j<=i; j++) {
+    //         printf("*");
+    //     }
+    //     for(int j=0; j<i; j++) {
+    //         printf("*");
+    //     }
+    //     printf("\n");
+    // }
+    char Test = 'A' + 1;
+    printf("%c", Test);
     return 0;
 }
 /* test */
