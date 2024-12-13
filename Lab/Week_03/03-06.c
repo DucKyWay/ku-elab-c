@@ -1,20 +1,54 @@
 #include <stdio.h>
 #include <stdlib.h>
-// #include <math.h>
+#include <math.h>
 
 int main() {
-    float x, y;
-    char x_in[100], y_in[100];
-    
+    char input_x[10], input_y[10];
+    double x, y;
+    char input_command;
+
     printf("Input x: ");
-    x = atof(fgets(x_in, 100, stdin));
+    fgets(input_x, 10, stdin);
     printf("Input y: ");
-    y = atof(fgets(y_in, 100, stdin));
+    fgets(input_y, 10, stdin);
 
-    printf("x = %.4f, y = %.4f", x, y);
-    printf("[a]:Add [s]:Subtract [m]:Multiply [d]:Divide [M]:modulo [^]: x ^ y");
-    
-    
+    x = atof(input_x);
+    y = atof(input_y);
 
+    printf("x = %5.4f, y = %5.4f\n", x, y);
+    printf("[a]:Add [s]:Subtract [m]:Multiply [d]:Divide [M]:modulo [^]: x^y\n");
+    printf("Command? ");
+    input_command = getchar();
+
+    switch (input_command) {
+        case 'a':
+            printf("x + y = %5.4lf\n", x+y);
+            break;
+
+        case 's':
+            printf("x - y = %5.4lf\n", x-y);
+            break;
+
+        case 'm':
+            printf("x * y = %5.4lf\n", x*y);
+            break;
+
+        case 'd':
+            printf("x / y = %5.4lf\n", x/y);
+            break;
+
+        case 'M':
+            printf("x mod y = %5.4lf\n", remainder(x,y));
+            break;
+
+        case '^':
+            printf("x ^ y = %5.4lf\n", pow(x, y));
+            break;
+        
+        default:
+            printf("Unknown Command.\n");
+            break;
+    }
     return 0;
+
 }
