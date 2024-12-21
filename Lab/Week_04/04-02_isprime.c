@@ -2,7 +2,15 @@
 #include <stdlib.h>
 
 int is_prime(int x) {
-    return ;
+    if (x <= 1) {
+        return 0; 
+    }
+    for (int i = 2; i * i <= x; i++) { 
+        if (x % i == 0) {
+            return 0;
+        }
+    }
+    return 1; 
 }
 
 int main() {
@@ -21,9 +29,3 @@ int main() {
 
     return 0;
 }
-
-// 10
-// 2 is a prime number.
-// 3 is a prime number.
-// 5 is a prime number.
-// 7 is a prime number.
