@@ -13,7 +13,8 @@ int main() {
         printf("Enter money collected today: ");
         money = atof( fgets(today_in, 100, stdin) );
         total += money;
-        printf("Total money collected up to day %d is %.2f. You need %.2f more.\n", ++day, total, goal-total);
+        if (total < goal) printf("Total money collected up to day %d is %.2f. You need %.2f more.\n", ++day, total, goal-total);
+        else ++day;
     }
 
     if(day == 1)    printf("Congratulations! You take %d day to reach your goal.\n", day);
