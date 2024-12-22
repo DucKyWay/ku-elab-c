@@ -15,7 +15,9 @@ int main() {
         total += money;
         printf("Total money collected up to day %d is %.2f. You need %.2f more.\n", ++day, total, goal-total);
     }
-    printf("Congratulations! You take %d days to reach your goal.\n", day);
+
+    if(day == 1)    printf("Congratulations! You take %d day to reach your goal.\n", day);
+    else            printf("Congratulations! You take %d days to reach your goal.\n", day);
     
     return 0;
 }

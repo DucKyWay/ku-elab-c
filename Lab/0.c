@@ -1,37 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int is_prime(int x) {
-    if (x <= 1) {
-        return 0; 
-    }
-    for (int i = 2; i * i <= x; i++) { 
-        if (x % i == 0) {
-            return 0;
-        }
-    }
-    return 1; 
-}
-
 int main() {
-    char input[5];
-    fgets(input, 5, stdin);
 
-    int i, n;
+    char goal_in[100], today_in[100];
+    float goal, money, total = 0;
+    int day = 0;
 
-    n = atoi(input);
-
-    for (i = 1; i <= n; i++) {
-        if (is_prime(i)) {
-            printf("%d is a prime number.\n", i);
-        }
+    printf("Enter your goal amount: ");
+    goal = atof( fgets(goal_in, 100, stdin) );
+    while(total < goal) {
+        printf("Enter money collected today: ");
+        money = atof( fgets(today_in, 100, stdin) );
+        total += money;
+        printf("Total money collected up to day %d is %.2f. You need %.2f more.\n", ++day, total, goal-total);
     }
 
+    if(day == 1)    printf("Congratulations! You take %d day to reach your goal.\n", day);
+    else            printf("Congratulations! You take %d days to reach your goal.\n", day);
+    
     return 0;
 }
-
-// 10
-// 2 is a prime number.
-// 3 is a prime number.
-// 5 is a prime number.
-// 7 is a prime number.
