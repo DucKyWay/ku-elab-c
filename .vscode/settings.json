@@ -4,6 +4,7 @@
         "compare": "c",
         "type_traits": "c",
         "math.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "func.h": "c"
     }
 }
