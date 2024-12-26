@@ -5,6 +5,7 @@
         "type_traits": "c",
         "math.h": "c",
         "stdio.h": "c",
-        "func.h": "c"
+        "func.h": "c",
+        "stdlib.h": "c"
     }
 }
