@@ -6,6 +6,7 @@
         "math.h": "c",
         "stdio.h": "c",
         "func.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "numbers": "c"
     }
 }
