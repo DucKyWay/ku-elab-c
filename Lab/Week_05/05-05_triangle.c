@@ -3,28 +3,30 @@
 
 int main() {    
 
-    char buffer[100];
     int n, i, j;
 
     printf("Enter n: ");
-    n = atoi( fgets(buffer, sizeof(buffer), stdin) );
+    scanf("%d", &n);
 
-    for(i = 0; i < n ; i++) {
-
+    for(i = 1; i <= n ; i++) {
         for(j = 0; j < i; j++) {
-            printf("-");
-        }
 
-        printf("\n");
-    }
-    for(i = n; i > 0; i--) {
-        for(j = 0; j < i; j++) {
-            printf("-");
+            if(j % 2 == 0)
+                printf("-");
+            else
+                printf("x");
         }
         printf("\n");
     }
+    for(i = n - 1; i > 0; i--) {
+        for(j = 0; j < i; j++) {
 
-    printf("%d", n);
-
+            if(j % 2 == 0)
+                printf("-");
+            else
+                printf("x");
+        }
+        printf("\n");
+    }
     return 0;
 }
