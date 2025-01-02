@@ -26,6 +26,7 @@ void shift_left(char str[], int n) {
     while (str[len] != '\0') { //len loop
         len++;
     }
+    if (len == 0) return ;
 
     n = n % len; // remove empty
 
