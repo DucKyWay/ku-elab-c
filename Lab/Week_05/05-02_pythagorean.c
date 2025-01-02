@@ -3,15 +3,14 @@
 
 int findLargestTripleSum(int n, int *a, int *b, int *c) {
 
-    for (int i = 1; i <= n; i++) {
-        for (int j = i + 1; j <= n; j++) {
-            for (int k = j + 1; k <= n; k++) {
-
-                if ((i + j + k == n) && (i*i + j*j == k*k)) {
-                    *a = i;
-                    *b = j;
-                    *c = k;
-                }
+    for (int i = 1; i <= n / 3; i++) { 
+        for (int j = i + 1; j <= n / 2; j++) {
+            
+            int k = n - i - j;
+            if (i * i + j * j == k * k) {
+                *a = i;
+                *b = j;
+                *c = k;
             }
         }
     }
