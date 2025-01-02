@@ -5,19 +5,24 @@ int main() {
     int n, i, j;
     printf("Enter the number of rows or columns: ");
     scanf("%d",&n);
-    int **a = ;
-    for() {
-        a[i] = ;
+    int **a = (int **)malloc(n * sizeof(int *));
+    for(i = 0; i < n; i++) {
+        a[i] = (int *)malloc(n * sizeof(int));
     }
 
     // Assign value to array a
     
-
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            a[i][j] = i + j + 1;
+        }
+    }
 
     // Print all values in array a
-    for() {
-        for()
-            printf("", a );
+    
+    for(i = 0; i < n; i++) {
+        for(j = 0; j < n; j++)
+            printf("%2d ", a[i][j]);
         printf("\n");
     }
     return 0;
