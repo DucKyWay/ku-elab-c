@@ -7,6 +7,7 @@
         "stdio.h": "c",
         "func.h": "c",
         "stdlib.h": "c",
-        "numbers": "c"
+        "numbers": "c",
+        "bitset": "c"
     }
 }
