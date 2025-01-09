@@ -1,37 +1,24 @@
 #include <stdio.h>
-#include <stdlib.h>
-
-unsigned long *fibo_array(unsigned int n, double *golden_ratio);
 
 int main() {
-    
-    unsigned int n;
-    double golden_ratio = 0;
 
-    scanf("%d", &n);
-    
-    unsigned long *fib_array = fibo_array(n, &golden_ratio);
-    for (int i = 0; i < n; i++) {
-        printf("%lu ", fib_array[i]);
-    }
-    printf("\n%f", golden_ratio);
+    char c, range;
+    char time[10];
+    int i = 0, hr = 0, m = 0;
 
-    free(fib_array);
+    printf("Enter a 12-hour time [eg. 12:34 am]: ");
+    while((c = getchar()) != '\n' && c != -1)
+        time[i++] = c;
+    time[i] = '\0';
+
+    for(i = 0; time[i] != ':'; i++) // hr
+        hr = hr * 10 + (time[i] - '0');
+    for(int j = i + 1; time[j] != ' '; j++) // m
+        m = m * 10 + (time[j] - '0');
+    range = time[i + 4]; // range
+
+    hr == 12 ? hr = 0: hr;
+    printf("Equivalent 24-hour time: %02d:%02d", (range == 'p' || range == 'P') ? hr += 12 : hr, m);
+
     return 0;
-}
-
-unsigned long *fibo_array(unsigned int n, double *golden_ratio) {
-    if(n < 2)
-        return NULL;
-
-    unsigned long *fib_array = (unsigned long *)malloc((n + 2) * sizeof(unsigned long));
-
-    fib_array[0] = 0; // fibo 0
-    fib_array[1] = 1; // fibo 1
-    for (unsigned int i = 2; i < n + 1; i++) // fibo n
-        fib_array[i] = fib_array[i - 1] + fib_array[i - 2];
-
-    *golden_ratio = (double)fib_array[n + 2] / fib_array[n + 1];
-
-    return fib_array;
 }
