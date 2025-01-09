@@ -9,6 +9,14 @@ int charcount(char *s) {
 
 void charweave(char *s,char *result) {
 // 1, n, 2, n-1, 3, n-2, 3, n-3
+
+/*
+String: hello, world
+Output: hdellrloow,  ,woolrlledh
+String: 12345
+Output: 1524334251
+
+*/
     int i = 0, find = -1;
     int n = charcount(s);
     
@@ -20,7 +28,7 @@ void charweave(char *s,char *result) {
     for(i = 1; i < n; i+= 2) {
         result[i] = s[find--];
     }
-    
+
     //Right
 }
 
