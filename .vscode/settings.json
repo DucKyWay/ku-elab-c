@@ -9,6 +9,10 @@
         "stdlib.h": "c",
         "numbers": "c",
         "bitset": "c",
-        "random": "c"
+        "random": "c",
+        "chrono": "c",
+        "text_encoding": "c",
+        "typeindex": "c",
+        "typeinfo": "c"
     }
 }
