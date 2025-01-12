@@ -9,25 +9,23 @@ int charcount(char *s) {
 
 void charweave(char *s,char *result) {
 
-    int i = 0;
+    int i = 0, pos = -1;
     int n = charcount(s);
-	int left = -1, right = n;
     
     // Left
-    for(i = 0; i < n; i+=2) {
-        result[i] = s[++left];
-    }
-    for(i = 1; i < n; i+=2) {
-        result[i] = s[--right];
-    }
+    for(i = 0; i < n; i+=2)
+        result[i] = s[++pos];
+    if(pos % 2 == 0) pos+=2;
+    for(i = 1; i < n; i+=2)
+        result[i] = s[pos--];
 
     //Right
-    for(i = n; i < n*2+1; i+=2) {
-        result[i] = s[right++];
-    }
-    for(i = n+1; i < n*2+1; i+=2) {
-        result[i] = s[left--];
-    }
+    pos = -1;
+    for(i = n*2-1; i >= n; i-=2)
+        result[i] = s[++pos];
+    if(pos % 2 == 0) pos+=2;
+    for(i = n*2-2; i >= n; i-=2)
+        result[i] = s[pos--];
 }
 
 int main()
@@ -35,7 +33,7 @@ int main()
 
    printf("String: ");
 //    gets(str);   /* read a line of characters from the input to "str" variable */
-   scanf("%[^\n]s", str);
+   scanf("%s", str);
    charweave(str,result);
    printf("Output: %s\n",result);
    return 0;
