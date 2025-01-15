@@ -1,5 +1,5 @@
 .exe
 .out
-*.c
-*.exe
-*.o
+.c
+.exe
+.o

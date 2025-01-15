@@ -13,23 +13,19 @@ void charweave(char *s,char *result) {
     int n = charcount(s);
     
     // Left
-    for(i = 0; i < n; i+=2) {
+    for(i = 0; i < n; i+=2)
         result[i] = s[++pos];
-    }
     if(pos % 2 == 0) pos+=2;
-    for(i = 1; i < n; i+=2) {
+    for(i = 1; i < n; i+=2)
         result[i] = s[pos--];
-    }
 
     //Right
     pos = -1;
-    for(i = n*2-1; i >= n; i-=2) {
+    for(i = n*2-1; i >= n; i-=2)
         result[i] = s[++pos];
-    }
     if(pos % 2 == 0) pos+=2;
-    for(i = n*2-2; i >= n; i-=2) {
+    for(i = n*2-2; i >= n; i-=2)
         result[i] = s[pos--];
-    }
 }
 
 int main()

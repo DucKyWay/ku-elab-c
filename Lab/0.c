@@ -6,7 +6,7 @@ int charcount(char *s) {
     while(s[i] != '\0') i++;
     return i;
 }
-
+// Test Git
 void charweave(char *s,char *result) {
 
     int i = 0, pos = -1;
