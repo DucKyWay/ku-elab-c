@@ -25,9 +25,15 @@ int main()
 	// Select prisoner to be killed
 	for (i = 0; i < numPrisoners; i++) {
 
-        //write-code-here
+// -------write-code-here-------
 
+        for(int j = 1, k = 0, c = 0; j < m && k < numPrisoners; j++, k++) {
+            if(j == m) {
+                killed[c++] = prisoners[k];
+            }
+        }
 
+// -----------------------------
         
 		// append number of prisoner who is killed to array `killed`
 		killed[i] = *killerPtr;
@@ -43,10 +49,15 @@ int main()
 }
 
 void removeKilled(int *array, int size, int killedPrisoner) {
-    //write-code-here
-    for(int i = 0; i < size; i++) {
-        if(*array + i == killedPrisoner) {
-            array[i] = *array + i - 1;
+    // implement
+    int pos = 0, j;
+    for(j = 0; j < size; j++) {
+        if(*array + j == killedPrisoner) {
+            pos = j;
+            break;
         }
     }
+    for(; j < size - 1; j++) {
+        array[j] = *array + j + 1;
+    } array[size - 1] = '\0';
 }
