@@ -1,42 +1,52 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-int main() {
-    int size, amount, count = 0;
-    int i, j;
-    char *fake = NULL; 
+void removeKilled(int *array, int size, int killedPrisoner);
 
-    scanf("%d", &size);
-    scanf("%d", &amount);
-    char **chain = (char **)malloc(sizeof(char *) * amount);
+int main()
+{
+	int numPrisoners, m, i;
 
-    for (i = 0; i < amount; i++) {
-        chain[i] = (char *)malloc(sizeof(char) * size);
-        scanf("%s", chain[i]);
-    }
+	scanf("%d", &numPrisoners);
+	scanf("%d", &m);
 
-    for (i = 0; i < amount; i++) {
-        count = 0;
-        for (j = 0; j < size; j++) {
-            if (chain[i][j] != chain[i + 1][j])
-                count++;
+	int prisoners[numPrisoners];
+	int killed[numPrisoners];
+
+	// generate array 1 to numPrisoners
+	for (i = 0; i < numPrisoners; i++) {
+		prisoners[i] = i + 1;
+	}
+
+	int *killerPtr = &prisoners[0];
+
+	// printf("@@ &prisoners[0] %d\n", (int) &prisoners[0]);
+	// printf("@@ &prisoners[%d] %d\n", numPrisoners - 1, (int) &prisoners[numPrisoners - 1]);
+
+	// Select prisoner to be killed
+	for (i = 0; i < numPrisoners; i++) {
+
+        //write-code-here
+
+
+        
+		// append number of prisoner who is killed to array `killed`
+		killed[i] = *killerPtr;
+		// remove number killed prisoner from array `prisoners`
+		removeKilled(&prisoners[0], numPrisoners, *killerPtr);
+
+	}
+
+	for (i = 0; i < numPrisoners; i++) {
+		printf("%d ", killed[i]);
+	}
+	return 0;
+}
+
+void removeKilled(int *array, int size, int killedPrisoner) {
+    //write-code-here
+    for(int i = 0; i < size; i++) {
+        if(*array + i == killedPrisoner) {
+            array[i] = *array + i - 1;
         }
-        if (count > 2) {
-            fake = (char *)malloc(sizeof(char) * size);
-            for (j = 0; j < size; j++)
-                fake[j] = chain[i][j];
-            break;
-        }
     }
-
-    if (fake) {
-        for (i = 0; i < size; i++) {
-            printf("%c", fake[i]);
-        }
-        free(fake);
-    }
-    for (i = 0; i < amount; i++)
-        free(chain[i]);
-    free(chain);
-    return 0;
 }
