@@ -21,7 +21,8 @@ int main() {
 void str_extract(char** source, char** vowel) {
 	
 	char* src = *source;
-    char* vwl = *vowel;
+	*vowel = malloc(sizeof(source) + 1);
+	char* vwl = *vowel;
     int i = 0, j = 0, k = 0;
 
     while (src[i] != '\0') {
@@ -30,12 +31,11 @@ void str_extract(char** source, char** vowel) {
             src[i] == 'I' || src[i] == 'i' ||
             src[i] == 'O' || src[i] == 'o' ||
             src[i] == 'U' || src[i] == 'u') {
-            
-            vwl[j++] = src[i++];
+            vwl[j++] = src[i];
         } else {
-            
-            src[k++] = src[i++];
+            src[k++] = src[i];
         }
+        i++;
     }
 
     vwl[j] = '\0';
