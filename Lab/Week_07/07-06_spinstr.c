@@ -3,37 +3,67 @@
 int charcount(char *s) {
    
     int i = 0;
-    while(s[i] != '\0') i++;
+    while (s[i] != '\0') {
+        if (s[i] == '\n') {
+            s[i] = '\0';
+            break;
+        }
+        i++;
+    }
     return i;
 }
 
 void charweave(char *s,char *result) {
 
-    int i = 0, pos = -1;
+    int i = 0;
     int n = charcount(s);
+	int left = -1, right = n;
     
     // Left
-    for(i = 0; i < n; i+=2)
-        result[i] = s[++pos];
-    if(pos % 2 == 0) pos+=2;
-    for(i = 1; i < n; i+=2)
-        result[i] = s[pos--];
+    // printf("right: %d left: %d\n", right, left);
+    for(i = 0; i < n; i+=2) {
+        result[i] = s[++left];
+    }
+    for(i = 1; i < n; i+=2) {
+        result[i] = s[--right];
+    }
 
     //Right
-    pos = -1;
-    for(i = n*2-1; i >= n; i-=2)
-        result[i] = s[++pos];
-    if(pos % 2 == 0) pos+=2;
-    for(i = n*2-2; i >= n; i-=2)
-        result[i] = s[pos--];
+    if(n % 2 != 0) {
+        left = (n/2) + 1;
+        right = (n/2);
+    }
+    // printf("right: %d left: %d\rright: ", right, left);
+    if(n % 2 == 0) {
+        for(i = n; i <= n*2+1; i+=2) {
+            result[i] = s[right++];
+            // printf("r: %d ", right-1);
+        }
+        // printf("\nleft: ");
+        for(i = n+1; i <= n*2+1; i+=2) {
+            result[i] = s[left--];
+            // printf("l: %d ", left+1);
+        } 
+    } else {
+        // printf("\right: ");
+        for(i = n; i < n*2; i+=2) {
+            result[i] = s[right--];
+            // printf("r: %d ", right+1);
+        }
+        // printf("\nleft: ");
+        for(i = n+1; i <= n*2+1; i+=2) {
+            result[i] = s[left++];
+            // printf("l: %d ", left-1);
+        } 
+    }    
+    // printf("\nright: %d left: %d\n", right, left);
 }
 
 int main()
 {  char str[100],result[200];
 
    printf("String: ");
-//    gets(str);   /* read a line of characters from the input to "str" variable */
-   scanf("%s", str);
+   fgets(str, sizeof(str), stdin);
    charweave(str,result);
    printf("Output: %s\n",result);
    return 0;

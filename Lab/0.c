@@ -1,40 +1,42 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-int charcount(char *s) {
-   
-    int i = 0;
-    while(s[i] != '\0') i++;
-    return i;
-}
-// Test Git
-void charweave(char *s,char *result) {
+int main() {
+    int size, amount, count = 0;
+    int i, j;
+    char *fake = NULL; 
 
-    int i = 0, pos = -1;
-    int n = charcount(s);
-    
-    // Left
-    for(i = 0; i < n; i+=2)
-        result[i] = s[++pos];
-    if(pos % 2 == 0) pos+=2;
-    for(i = 1; i < n; i+=2)
-        result[i] = s[pos--];
+    scanf("%d", &size);
+    scanf("%d", &amount);
+    char **chain = (char **)malloc(sizeof(char *) * amount);
 
-    //Right
-    pos = -1;
-    for(i = n*2-1; i >= n; i-=2)
-        result[i] = s[++pos];
-    if(pos % 2 == 0) pos+=2;
-    for(i = n*2-2; i >= n; i-=2)
-        result[i] = s[pos--];
-}
+    for (i = 0; i < amount; i++) {
+        chain[i] = (char *)malloc(sizeof(char) * size);
+        scanf("%s", chain[i]);
+    }
 
-int main()
-{  char str[100],result[200];
+    for (i = 0; i < amount; i++) {
+        count = 0;
+        for (j = 0; j < size; j++) {
+            if (chain[i][j] != chain[i + 1][j])
+                count++;
+        }
+        if (count > 2) {
+            fake = (char *)malloc(sizeof(char) * size);
+            for (j = 0; j < size; j++)
+                fake[j] = chain[i][j];
+            break;
+        }
+    }
 
-   printf("String: ");
-//    gets(str);   /* read a line of characters from the input to "str" variable */
-   scanf("%s", str);
-   charweave(str,result);
-   printf("Output: %s\n",result);
-   return 0;
+    if (fake) {
+        for (i = 0; i < size; i++) {
+            printf("%c", fake[i]);
+        }
+        free(fake);
+    }
+    for (i = 0; i < amount; i++)
+        free(chain[i]);
+    free(chain);
+    return 0;
 }

@@ -17,6 +17,7 @@
         "sstream": "c",
         "regex": "c",
         "algorithm": "c",
-        "format": "c"
+        "format": "c",
+        "functional": "c"
     }
 }
