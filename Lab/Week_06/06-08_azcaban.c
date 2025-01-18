@@ -19,18 +19,27 @@ int main()
 
     int *killerPtr = &prisoners[0];
 
-    // printf("@@ &prisoners[0] %d\n", (int) &prisoners[0]);
-    // printf("@@ &prisoners[%d] %d\n", numPrisoners - 1, (int) &prisoners[numPrisoners - 1]);
+    printf("@@ &prisoners[0] %d\n", (int) &prisoners[0]);
+    printf("@@ &prisoners[%d] %d\n", numPrisoners - 1, (int) &prisoners[numPrisoners - 1]);
 
     // Select prisoner to be killed
     for (i = 0; i < numPrisoners; i++) {
-        int count = 0;
+
 // -------write-code-here-------
-        for(int j = 1; j < m; j++) {
-            if(i == m) {
-            // killed[count++] = prisoners[i];
+
+        int count = m;
+        while (count > 0) {
+            if (*killerPtr != 0) {
+                count--;
+            }
+            if (count == 0) {
+                break;
+            }
+            killerPtr++;
+            if (killerPtr >= &prisoners[numPrisoners]) {
+                killerPtr = &prisoners[0];
+            }
         }
-    }
         
 // -----------------------------
         
@@ -49,14 +58,10 @@ int main()
 
 void removeKilled(int *array, int size, int killedPrisoner) {
     // implement
-    int pos = 0, j;
-    for(j = 0; j < size; j++) {
-        if(*array + j == killedPrisoner) {
-            pos = j;
+    for (int i = 0; i < size; i++) {
+        if (array[i] == killedPrisoner) {
+            array[i] = 0;
             break;
         }
     }
-    for(; j < size - 1; j++) {
-        array[j] = *array + j + 1;
-    } array[size - 1] = '\0';
 }
