@@ -20,7 +20,8 @@
         "format": "c",
         "functional": "c",
         "cmath": "c",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "vector": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
