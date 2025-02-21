@@ -21,7 +21,8 @@
         "functional": "c",
         "cmath": "c",
         "ostream": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "string.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
