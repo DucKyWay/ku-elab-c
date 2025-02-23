@@ -2,8 +2,8 @@
 using namespace std;
 
 typedef struct Word_ {
-    char word[50];    
-    int amount;
+    string word;   
+    int count;
 } Word;
 
 int main() {
@@ -17,12 +17,24 @@ int main() {
             break;
         }
         
-
+        find = 0;
+        for (i = 0; i < last_word; i++) {
+            if (data[i].word == input) { // have word
+                data[i].count++;
+                find = 1;
+                break;
+            }
+        }
+        if (!find) { // new word
+            data[last_word].word = input;
+            data[last_word].count = 1;
+            last_word++;
+        }
     }
 
     cout << "Output:" << endl;
+    for(i = 0; i < last_word; i++) 
+        cout << data[i].word << " = " << data[i].count << endl;
     
-
-
     return 0;
 }
