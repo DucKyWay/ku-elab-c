@@ -3,7 +3,16 @@
 using namespace std;
 
 vector<int> compareTriplets(vector<int> arrA, vector<int> arrB) {
+    
+    vector<int> scores(2);
+    for(int i = 0; i < arrA.size(); i++) {
+        if(arrA[i] > arrB[i]) 
+            scores[0]++;
+        else if(arrA[i] < arrB[i]) 
+            scores[1]++;
+    }
 
+    return scores;
 }
 
 int main() {

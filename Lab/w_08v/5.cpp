@@ -4,9 +4,16 @@
 using namespace std;
 
 void miniMaxSum(vector<int> arr, long *minSum, long &maxSum) {
+    sort(arr.begin(), arr.end());
     
+    long totalSum = 0;
+    
+    for (int i = 0; i < 5; i++) {
+        totalSum += arr[i];
+    }
 
-    return 0;
+    *minSum = totalSum - arr[4];
+    maxSum = totalSum - arr[0];
 }
 
 int main() {
